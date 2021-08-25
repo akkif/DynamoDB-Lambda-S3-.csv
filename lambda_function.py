@@ -2,8 +2,8 @@ import boto3
 import csv
 from boto3.dynamodb.conditions import Key, Attr
 
-table_name = "csv_demo"
-bucket_name= "json.trigger.lambda.dynamodb"
+table_name = "D y n a m o D B   T a b l e   N a m e"
+bucket_name= "B u c k e t  N a m e"
 temp_filename='/tmp/test.csv'
 
 s3 = boto3.resource('s3')
@@ -15,7 +15,7 @@ def lambda_handler(event,context):
     header = True
     with open(temp_filename,"w") as output_file:
         writer = csv.writer(output_file)
-        response = table.scan(FilterExpression=Attr('marks_avg').gte(80))
+        response = table.scan(FilterExpression=Attr('marks_avg').gte(80)) #retriving the candidate info who got >= 80 marks
         #print(response['Items'])
         for i in response['Items']:
             if header == True:
